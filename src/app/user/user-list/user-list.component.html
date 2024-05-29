@@ -1,0 +1,24 @@
+<div>
+  <h1>Lista de Usuarios</h1>
+  <app-user-search (search)="onSearch($event)"></app-user-search>
+  <div class="sort-controls">
+    <label for="sortOrder">Ordenar por nombre:</label>
+    <select id="sortOrder" (change)="onSortChange($event)">
+      <option value="asc">Ascendente</option>
+      <option value="desc">Descendente</option>
+    </select>
+  </div>
+  <ul>
+    <li *ngFor="let user of users | sort:sortOrder">
+      {{ user.first_name }} {{ user.last_name }} - {{ user.email }}
+      <button mat-raised-button color="primary" [routerLink]="['/users', user.id]">Ver Detalles</button>
+      <button *ngIf="admin" [routerLink]="['/users/edit', user.id]">Editar</button>
+      <button *ngIf="admin" mat-raised-button color="warn" (click)="deleteUser(user.id)">Borrar</button>
+    </li>
+  </ul>
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="page <= 1">Anterior</button>
+    <span>Página {{ page }} de {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="page >= totalPages">Siguiente</button>
+  </div>
+</div>

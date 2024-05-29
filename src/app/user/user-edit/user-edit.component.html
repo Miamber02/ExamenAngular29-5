@@ -1,0 +1,15 @@
+<div>
+    <h1>Editar Usuario</h1>
+    <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+      <label for="first_name">Nombre:</label>
+      <input id="first_name" formControlName="first_name" type="text" />
+      <label for="last_name">Apellido:</label>
+      <input id="last_name" formControlName="last_name" type="text" />
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" />
+      <label for="avatar">Avatar:</label>
+      <input id="avatar" formControlName="avatar" type="text" />
+      <button type="submit">Actualizar</button>
+    </form>
+  </div>
+  
